@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, ChangeDetectorRef } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'B2B';
+  mobileQuery: MediaQueryList;
+
+  private _mobileQueryListener: () => void;
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 }
