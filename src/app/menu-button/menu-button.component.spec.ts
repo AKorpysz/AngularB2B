@@ -12,7 +12,7 @@ import { TestHelperService } from '../shared/test-helper.service';
 describe('MenuButtonComponent', () => {
   let component: MenuButtonComponent;
   let fixture: ComponentFixture<MenuButtonComponent>;
-  let testService: TestHelperService;
+  let testService: TestHelperService<MenuButtonComponent>;
 
   const routes: Routes = [];
   beforeEach(async(() => {
@@ -23,13 +23,13 @@ describe('MenuButtonComponent', () => {
         { provide: APP_BASE_HREF, useValue : '/' }]
     })
     .compileComponents();
-    testService = new TestHelperService();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MenuButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    testService = new TestHelperService(fixture);
   });
 
   it('should create', () => {
@@ -37,61 +37,61 @@ describe('MenuButtonComponent', () => {
   });
 
   it('exist tooltip', () => {
-    testService.checkElementExist(fixture, '#tooltip');
+    testService.checkElementExist('#tooltip');
   });
 
   it('exist icon', () => {
-    testService.checkElementExist(fixture, '#icon');
+    testService.checkElementExist('#icon');
   });
 
   it('exist label', () => {
-    testService.checkElementExist(fixture, '#caption-label');
+    testService.checkElementExist('#caption-label');
   });
 
   it('exist button', () => {
-    testService.checkElementExist(fixture, '#button');
+    testService.checkElementExist('#button');
   });
 
   it('has toolTip', () => {
     const testedValue = 'tip';
     component.tooltip = testedValue;
-    testService.checkAttributeExist(fixture, '#tooltip', 'ng-reflect-message');
+    testService.checkAttributeExist('#tooltip', 'ng-reflect-message');
   });
 
   it('is toolTip on the right', () => {
     const testedValue = 'tip';
     component.tooltip = testedValue;
-    testService.checkAttributeValue(fixture, '#tooltip', 'mattooltipposition', 'right');
+    testService.checkAttributeValue('#tooltip', 'mattooltipposition', 'right');
   });
 
   it('bind toolTip', () => {
     const testedValue = 'tip';
     component.tooltip = testedValue;
-    testService.checkAttributeValue(fixture, '#tooltip', 'ng-reflect-message', testedValue);
+    testService.checkAttributeValue('#tooltip', 'ng-reflect-message', testedValue);
   });
 
   it('bind icon', () => {
     const testedValue = 'add';
     component.icon = testedValue;
-    testService.checkElementTextValue(fixture, '#icon', testedValue);
+    testService.checkElementTextValue('#icon', testedValue);
   });
 
   it('bind name', () => {
     const testedValue = 'Test';
     component.caption = testedValue;
-    testService.checkElementTextValue(fixture, '#caption-label', testedValue);
+    testService.checkElementTextValue('#caption-label', testedValue);
   });
 
   it('has route', () => {
     const testedValue = 'route';
     component.route = testedValue;
-    testService.checkAttributeExist(fixture, '#button', 'ng-reflect-router-link');
+    testService.checkAttributeExist('#button', 'ng-reflect-router-link');
   });
 
   it('bind route', () => {
     const testedValue = 'route';
     component.route = testedValue;
-    testService.checkAttributeValue(fixture, '#button', 'ng-reflect-router-link', testedValue);
+    testService.checkAttributeValue('#button', 'ng-reflect-router-link', testedValue);
   });
 });
 
