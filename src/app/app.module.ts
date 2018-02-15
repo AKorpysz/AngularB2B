@@ -16,6 +16,7 @@ import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MenuButtonComponent } from './menu-button/menu-button.component';
 import 'hammerjs';
+import { TestHelperService } from './shared/test-helper.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import 'hammerjs';
     FormsModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [TestHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
