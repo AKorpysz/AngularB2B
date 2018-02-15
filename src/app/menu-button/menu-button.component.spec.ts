@@ -42,9 +42,18 @@ describe('MenuButtonComponent', () => {
     expect(uiElement.hasAttribute('ng-reflect-message')).toEqual(true);
   });
 
+  it('is toolTip on the right', () => {
+    const testedValue = 'tip';
+    component.tooltip = testedValue;
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    const uiElement = compiled.querySelector('#tooltip');
+    expect(uiElement.getAttribute('mattooltipposition')).toEqual('right');
+  });
+
   it('bind toolTip', () => {
     const testedValue = 'tip';
-    component.tooltip = 'tip';
+    component.tooltip = testedValue;
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     const uiElement = compiled.querySelector('#tooltip');
