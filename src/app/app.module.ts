@@ -12,8 +12,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
-import { MaterialModule } from '../material.module';
-import { AppRoutingModule } from './/app-routing.module';
+import { MaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing.module';
 import { MenuButtonComponent } from './menu-button/menu-button.component';
 import 'hammerjs';
 
