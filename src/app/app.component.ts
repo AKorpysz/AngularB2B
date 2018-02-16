@@ -1,6 +1,7 @@
 import { Component, Input, ChangeDetectorRef } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ScreenDetectorService } from './services/screen-detector.service';
 
 @Component({
   selector: 'app-root',
@@ -9,18 +10,11 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class AppComponent {
   title = 'B2B';
-  mobileQuery: MediaQueryList;
-
-  private _mobileQueryListener: () => void;
-
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  isMobile() {
+    return this.screenDetector.isMobile();
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+  constructor(private screenDetector: ScreenDetectorService, private changeDetectorRef: ChangeDetectorRef, private media: MediaMatcher) {
+    this.screenDetector.setDetectors(changeDetectorRef, media);
   }
 }

@@ -1,21 +1,21 @@
-<div class="container" [class.is-mobile]="mobileQuery.matches">
+<div class="container" [class.is-mobile]="isMobile()">
     <mat-toolbar color="primary" class="toolbar mat-elevation-z12">
       <span matTooltip="Kliknij aby otworzyć menu">
-        <button mat-icon-button (click)="sidenav.toggle()">
+        <button id='button-hamburger' mat-icon-button (click)="sidenav.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
       </span>
       <h1 class="app-name">{{title}}</h1>
     </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #sidenav  [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="isMobile() ? 56 : 0">
+    <mat-sidenav #sidenav  [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()"
       fixedTopGap="56" class="sidenav-menu-content">
-      <app-left-menu [isMobile]="mobileQuery.matches"></app-left-menu>
+      <app-left-menu id='left-menu'></app-left-menu>
     </mat-sidenav>
 
     <mat-sidenav-content >
-    <div fxFlex="grow">
+    <div fxFlex="grow" id='div-router'>
         <router-outlet></router-outlet>
     </div>
     </mat-sidenav-content>

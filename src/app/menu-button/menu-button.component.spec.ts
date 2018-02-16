@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from '../app.component';
 import { MaterialModule } from '../material.module';
 import { Routes, RouterModule } from '@angular/router';
-import { TestHelperService } from '../shared/test-helper.service';
+import { TestHelperService } from '../shared/test-helper.service.spec';
 
 describe('MenuButtonComponent', () => {
   let component: MenuButtonComponent;

@@ -35,4 +35,9 @@ export class TestHelperService<T> {
     expect(uiElement).toBeDefined();
     expect(uiElement === '' || uiElement === null).toEqual(false);
   }
+
+  checkElementNotExist(elementName: string) {
+    const uiElement = this.getElement(elementName);
+    expect(uiElement === '' || uiElement === null || uiElement.toBeUndefined()).toEqual(true);
+  }
 }

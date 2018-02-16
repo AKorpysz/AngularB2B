@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import { NgModule } from '@angular/core';
+import { NgModule, ChangeDetectorRef } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {HttpModule} from '@angular/http';
@@ -16,9 +16,7 @@ import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MenuButtonComponent } from './menu-button/menu-button.component';
 import 'hammerjs';
-import { TestHelperService } from './shared/test-helper.service';
-
-
+import { ScreenDetectorService } from './services/screen-detector.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +39,9 @@ import { TestHelperService } from './shared/test-helper.service';
     FormsModule,
     FlexLayoutModule
   ],
-  providers: [TestHelperService],
+  providers: [
+    ScreenDetectorService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
