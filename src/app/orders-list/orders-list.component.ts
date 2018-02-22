@@ -8,14 +8,15 @@ import { Component } from '@angular/core';
 export class OrdersListComponent  {
 
   // tslint:disable-next-line:max-line-length
-  displayedColumns = ['id',
-  'title',
+  displayedColumns = [
+   'id',
   'externalNumberTrade',
   'externalNumberSa',
   'status',
   'construction',
   'responsiblePerson',
-  'dateCreation'];
+  'dateCreation',
+  'dateLimit'];
   private colorWarn = 'yellow';
   private colorOk = 'green';
   private colorError = 'red';

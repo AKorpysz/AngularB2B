@@ -17,6 +17,7 @@ import 'hammerjs';
 import { ScreenDetectorService } from './services/screen-detector.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersListMobileComponent } from './orders-list-mobile/orders-list-mobile.component';
+import { OrdersService } from './orders/orders.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { OrdersListMobileComponent } from './orders-list-mobile/orders-list-mobi
   ],
   providers: [
     ScreenDetectorService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })
