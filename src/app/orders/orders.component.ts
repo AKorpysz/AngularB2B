@@ -1,12 +1,12 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScreenDetectorService } from '../services/screen-detector.service';
 
 @Component({
-  selector: 'app-left-menu',
-  templateUrl: './left-menu.component.html',
-  styleUrls: ['./left-menu.component.css']
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css']
 })
-export class LeftMenuComponent  {
+export class OrdersComponent {
   constructor(private screenDetector: ScreenDetectorService) { }
   isMobile() {
     return this.screenDetector.isMobile();

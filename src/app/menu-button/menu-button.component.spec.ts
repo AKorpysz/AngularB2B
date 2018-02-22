@@ -1,10 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuButtonComponent } from './menu-button.component';
-import { AppModule } from '../app.module';
 import { APP_BASE_HREF } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
-import { AppComponent } from '../app.component';
 import { MaterialModule } from '../material.module';
 import { Routes, RouterModule } from '@angular/router';
 import { TestHelperService } from '../shared/test-helper.service.spec';
@@ -53,8 +49,7 @@ describe('MenuButtonComponent', () => {
   });
 
   it('has toolTip', () => {
-    const testedValue = 'tip';
-    component.tooltip = testedValue;
+    component.tooltip = 'tip';
     testService.checkAttributeExist('#tooltip', 'ng-reflect-message');
   });
 

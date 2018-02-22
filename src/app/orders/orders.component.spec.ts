@@ -1,0 +1,61 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { OrdersComponent } from './orders.component';
+import { ScreenDetectorMock } from '../mockServices/screen-detector-mock.service';
+import { ScreenDetectorService } from '../services/screen-detector.service';
+import { MaterialModule } from '../material.module';
+import { TestHelperService } from '../shared/test-helper.service.spec';
+import { OrdersListComponent } from '../orders-list/orders-list.component';
+import { OrdersListMobileComponent } from '../orders-list-mobile/orders-list-mobile.component';
+
+describe('OrdersComponent', () => {
+  let component: OrdersComponent;
+  let fixture: ComponentFixture<OrdersComponent>;
+  let mockDetector: ScreenDetectorMock;
+  let testService: TestHelperService<OrdersComponent>;
+  beforeEach(async(() => {
+    mockDetector = new ScreenDetectorMock();
+    TestBed.configureTestingModule({
+      imports: [MaterialModule ],
+      declarations: [ OrdersComponent, OrdersListComponent, OrdersListMobileComponent ],
+      providers: [
+        { provide: ScreenDetectorService, useValue: mockDetector} ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(OrdersComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    testService = new TestHelperService(fixture);
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have mobile in mobile', () => {
+    mockDetector.isMobileFlag = true;
+    fixture.detectChanges();
+    testService.checkElementExist('#list-mobile');
+  });
+
+  it('should have desktop in dektop', () => {
+    mockDetector.isMobileFlag = false;
+    fixture.detectChanges();
+    testService.checkElementExist('#list-desktop');
+  });
+
+  it('shouldn`t have mobile in dektop', () => {
+    mockDetector.isMobileFlag = false;
+    fixture.detectChanges();
+    testService.checkElementNotExist('#list-mobile');
+  });
+
+  it('shouldn`t have dektop in mobile', () => {
+    mockDetector.isMobileFlag = true;
+    fixture.detectChanges();
+    testService.checkElementNotExist('#list-desktop');
+  });
+});

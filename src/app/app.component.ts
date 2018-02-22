@@ -1,5 +1,4 @@
-import { Component, Input, ChangeDetectorRef } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ScreenDetectorService } from './services/screen-detector.service';
 

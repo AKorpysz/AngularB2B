@@ -1,10 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-import { NgModule, ChangeDetectorRef } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {HttpModule} from '@angular/http';
 import { AppComponent } from './app.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { OrdersListComponent } from './orders-list/orders-list.component';
@@ -17,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuButtonComponent } from './menu-button/menu-button.component';
 import 'hammerjs';
 import { ScreenDetectorService } from './services/screen-detector.service';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersListMobileComponent } from './orders-list-mobile/orders-list-mobile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,9 @@ import { ScreenDetectorService } from './services/screen-detector.service';
     ProductDetailsComponent,
     OrderDetailsComponent,
     OrderConfirmationComponent,
-    MenuButtonComponent
+    MenuButtonComponent,
+    OrdersComponent,
+    OrdersListMobileComponent
   ],
   exports: [
    MaterialModule
