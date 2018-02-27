@@ -1,3 +1,51 @@
-<p>
-    order-list works!
-  </p>
+<div class="example-container mat-elevation-z8">
+
+  <mat-table #table [dataSource]="dataSource" matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="externalNumberTrade">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer Trade </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.externalNumberTrade}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="externalNumberSa">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Numer Sa </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.externalNumberSa}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="construction">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Budowa </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.construction}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="responsiblePerson">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Osoba odpowiedzialna </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.responsiblePerson}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateCreation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Data utworzenia </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateCreation | date:"dd MMMM yyyy HH:mm:ss"}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateLimit">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Data realizacji </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateLimit | date:"dd MMMM yyyy HH:mm:ss"}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator #paginator [length]="resultsLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>

@@ -1,6 +1,7 @@
 import { OrderDto } from '../dto/OrderDto';
 import { Status } from '../dto/Status';
-
+import { Observable } from 'rxjs/Observable';
+import {of} from 'rxjs/observable/of';
 export const ORDERS: OrderDto[] = [
   {id: 1, externalNumberTrade: 'test number A1', externalNumberSa: 'test number B1', status: Status.ACCEPTED, construction: 'Budowa 1', responsiblePerson: 'osoba 1', dateCreation: new Date(2019, 8, 1, 13, 7, 2), dateLimit: new Date(2045, 8, 2, 13, 7, 2)  },
   {id: 2, externalNumberTrade: 'test number A2', externalNumberSa: 'test number B2', status: Status.ACCEPTED, construction: 'Budowa 2', responsiblePerson: 'osoba 2', dateCreation: new Date(2022, 7, 2, 13, 7, 2), dateLimit: new Date(2045, 8, 2, 13, 7, 2)  },
@@ -24,3 +25,14 @@ export const ORDERS: OrderDto[] = [
   {id: 20, externalNumberTrade: 'test number A20', externalNumberSa: 'test number B20', status: Status.ACCEPTED, construction: 'Budowa 6', responsiblePerson: 'osoba 1', dateCreation: new Date(2001, 8, 2, 20, 7, 2), dateLimit: new Date(2045, 8, 2, 13, 7, 2)  },
   {id: 21, externalNumberTrade: 'test number A21', externalNumberSa: 'test number B21', status: Status.ACCEPTED, construction: 'Budowa 5', responsiblePerson: 'osoba 3', dateCreation: new Date(2000, 9, 2, 21, 7, 2), dateLimit: new Date(2045, 8, 2, 13, 7, 2)  },
 ];
+
+export class OrdersServiceMock {
+  getOrders(): Observable<OrderDto[]> {
+    return of(ORDERS);
+  }
+
+  getOrder(id: number) {
+    return of(ORDERS.find(x => x.id === id));
+  }
+}
+

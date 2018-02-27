@@ -18,6 +18,7 @@ import { ScreenDetectorService } from './services/screen-detector.service';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersListMobileComponent } from './orders-list-mobile/orders-list-mobile.component';
 import { OrdersService } from './orders/orders.service';
+import { OrdersServiceMock } from './mockServices/orders-mock.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { OrdersService } from './orders/orders.service';
   ],
   providers: [
     ScreenDetectorService,
-    OrdersService
+    OrdersService,
+    OrdersServiceMock
   ],
   bootstrap: [AppComponent]
 })
