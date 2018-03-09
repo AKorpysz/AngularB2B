@@ -1,23 +1,29 @@
 <div class="container" [class.is-mobile]="isMobile()">
-    <mat-toolbar color="primary" class="toolbar mat-elevation-z12">
-      <span matTooltip="Kliknij aby otworzyć menu">
-        <button id='button-hamburger' mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-      </span>
-      <h1 class="app-name">{{title}}</h1>
-    </mat-toolbar>
+  <mat-toolbar color="primary" class="toolbar mat-elevation-z12">
+    <span matTooltip="Kliknij aby otworzyć menu">
+      <button id='button-hamburger' mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </span>
+    <h1 class="app-name">{{title}}</h1>
+
+    <div class="filter-data">
+      <mat-form-field [hideRequiredMarker]="true" floatLabel=never class="inputFilter" >
+        <input  matInput (keyup.enter)="search($event.target.value)" (keyup)="getPrompts($event.target.value)">
+        <mat-placeholder class="placeholder"><mat-icon class="iconHolder">search</mat-icon><i class="searchLabel">Search</i></mat-placeholder>
+      </mat-form-field>
+    </div>
+  </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="isMobile() ? 56 : 0">
-    <mat-sidenav #sidenav  [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()"
-      fixedTopGap="56" class="sidenav-menu-content">
+    <mat-sidenav #sidenav [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()" fixedTopGap="56" class="sidenav-menu-content">
       <app-left-menu id='left-menu'></app-left-menu>
     </mat-sidenav>
 
-    <mat-sidenav-content >
-    <div fxFlex="grow" id='div-router'>
+    <mat-sidenav-content>
+      <div fxFlex="grow" id='div-router'>
         <router-outlet></router-outlet>
-    </div>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
-  </div>
+</div>

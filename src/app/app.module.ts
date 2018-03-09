@@ -19,6 +19,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrdersListMobileComponent } from './orders-list-mobile/orders-list-mobile.component';
 import { OrdersService } from './orders/orders.service';
 import { OrdersServiceMock } from './mockServices/orders-mock.service';
+import { TempComponent } from './temp/temp.component';
+import { SearchService } from './shared/search.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { OrdersServiceMock } from './mockServices/orders-mock.service';
     OrderConfirmationComponent,
     MenuButtonComponent,
     OrdersComponent,
-    OrdersListMobileComponent
+    OrdersListMobileComponent,
+    TempComponent
   ],
   exports: [
    MaterialModule
@@ -46,7 +49,8 @@ import { OrdersServiceMock } from './mockServices/orders-mock.service';
   providers: [
     ScreenDetectorService,
     OrdersService,
-    OrdersServiceMock
+    OrdersServiceMock,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

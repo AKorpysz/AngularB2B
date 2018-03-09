@@ -19,7 +19,6 @@ export class ScreenDetectorService
   }
 
   public isMobile(): boolean {
-     console.log('running method isMobile');
     if (this.mobileQuery !== null && this.mobileQuery !== undefined) {
       return this.mobileQuery.matches;
     }

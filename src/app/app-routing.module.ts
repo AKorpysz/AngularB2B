@@ -6,6 +6,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { OrdersComponent } from './orders/orders.component';
+import { TempComponent } from './temp/temp.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/orders', pathMatch: 'full' },
