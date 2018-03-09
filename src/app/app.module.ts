@@ -21,6 +21,7 @@ import { OrdersService } from './orders/orders.service';
 import { OrdersServiceMock } from './mockServices/orders-mock.service';
 import { TempComponent } from './temp/temp.component';
 import { SearchService } from './shared/search.service';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { SearchService } from './shared/search.service';
     MenuButtonComponent,
     OrdersComponent,
     OrdersListMobileComponent,
+    SearchComponent,
     TempComponent
   ],
   exports: [

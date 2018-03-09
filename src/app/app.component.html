@@ -8,10 +8,7 @@
     <h1 class="app-name">{{title}}</h1>
 
     <div class="filter-data">
-      <mat-form-field [hideRequiredMarker]="true" floatLabel=never class="inputFilter" >
-        <input  matInput (keyup.enter)="search($event.target.value)" (keyup)="getPrompts($event.target.value)">
-        <mat-placeholder class="placeholder"><mat-icon class="iconHolder">search</mat-icon><i class="searchLabel">Search</i></mat-placeholder>
-      </mat-form-field>
+        <app-search></app-search>
     </div>
   </mat-toolbar>
 
