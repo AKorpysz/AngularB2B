@@ -65,12 +65,12 @@ export class OrdersListComponent implements OnInit {
     this.dataSource.filter = phrase;
   }
 
-  getPrompts(phrase: string): string[] {
+  getPrompts(phrase: string) {
     console.log('OrdersListComponent: zwracam podpowiedzi dla ' + phrase);
-    return [
+    this.searchService.setHintsData([
       'Test zam1',
       'Test zam2'
-    ];
+    ]);
   }
 
 }

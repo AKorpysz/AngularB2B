@@ -1,4 +1,9 @@
-<mat-form-field [hideRequiredMarker]="true" floatLabel=never class="inputFilter" >
-  <input  matInput (keyup.enter)="search($event.target.value)" (keyup)="getPrompts($event.target.value)">
+<mat-form-field [hideRequiredMarker]="true" floatLabel=never class="inputFilter">
+  <input  matInput (keyup.enter)="search($event.target.value)" (keyup)="getPrompts($event.target.value)" [matAutocomplete]="auto">
   <mat-placeholder class="placeholder"><mat-icon class="iconHolder">search</mat-icon><i class="searchLabel">Search</i></mat-placeholder>
 </mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let hint of hints" [value]="hint" (click)="search(hint)">
+    {{ hint }}
+  </mat-option>
+</mat-autocomplete>
