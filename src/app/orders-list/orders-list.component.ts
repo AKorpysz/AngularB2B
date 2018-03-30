@@ -7,6 +7,8 @@ import { SearchService } from '../shared/search.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Unsubscriber } from '../shared/unsubscriber';
 import { OrderStatusFormatterPipe } from '../shared/orderStatusFormatter.pipe';
+import { OrderStatus } from '../dto/OrderStatus';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,14 +26,15 @@ export class OrdersListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private ordersService: OrdersService, public searchService: SearchService) { }
-
+  constructor(private ordersService: OrdersService, public searchService: SearchService, private router: Router) { }
+  public selectedRowIndex = -1;
   private orderSubscription: Subscription;
   private searchSubscription: Subscription;
   private getPropmptsSubscription: Subscription;
   private colorWarn = 'yellow';
   private colorOk = 'green';
   private colorError = 'red';
+  private colorDefault = 'black';
 
   displayedColumns = [
     'id',
@@ -48,6 +51,31 @@ export class OrdersListComponent implements OnInit {
     this.dataSource = new MatTableDataSource(orders);
     this.getPropmptsSubscription = this.searchService.isDataNeeded$.subscribe(x => this.getPrompts(x));
     this.searchSubscription = this.searchService.searchFinishedData$.subscribe(x => this.search(x));
+  }
+
+  getColor(status: OrderStatus) {
+    if (!status) {
+      return this.colorDefault;
+    }
+    switch (status) {
+      case OrderStatus.WAITING:
+        return this.colorWarn;
+      case OrderStatus.REJECTED:
+      case OrderStatus.ERROR:
+        return this.colorError;
+      case OrderStatus.ACCEPTED:
+        return this.colorOk;
+      default:
+        return this.colorDefault;
+    }
+  }
+
+  onRowClick(row) {
+    const shouldRedirect = row.id === this.selectedRowIndex;
+    this.selectedRowIndex = row.id;
+    if (shouldRedirect) {
+      this.router.navigate(['/order', row.id]);
+    }
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
