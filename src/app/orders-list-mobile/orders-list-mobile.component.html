@@ -1,3 +1,24 @@
-<p>
-  orders-list-mobile works!
-</p>
+<div class='md-padding' layout="row" layout-wrap>
+  <mat-grid-list cols="4" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let order of dataSource.data">
+      <mat-card>
+        <div class="mainContainer">
+          <div class="headerContainer">
+            <mat-card-header>
+              <mat-card-title>Id {{order.id}} </mat-card-title>
+              <mat-card-subtitle>Id Sa {{order.externalNumberSa}}</mat-card-subtitle>
+              <mat-card-subtitle>Id Trade {{order.externalNumberTrade}}</mat-card-subtitle>
+            </mat-card-header>
+          </div>
+          <div class="contentContainer">
+            <p>Status {{order.status }} </p>
+            <p>Budowa {{order.construction }} </p>
+            <p>Osoba odpowiedzialna {{order.responsiblePerson }} </p>
+            <p>Data utworzenia {{order.dateCreation }} </p>
+            <p>Data realizacji {{order.dateLimit }} </p>
+          </div>
+        </div>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

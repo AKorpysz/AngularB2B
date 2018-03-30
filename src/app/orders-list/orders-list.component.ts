@@ -5,12 +5,15 @@ import { OrderDto } from '../dto/OrderDto';
 import { ReturnStatement } from '@angular/compiler';
 import { SearchService } from '../shared/search.service';
 import { Subscription } from 'rxjs/Subscription';
+import { Unsubscriber } from '../shared/unsubscriber';
+
 
 @Component({
   selector: 'app-orders-list',
   templateUrl: './orders-list.component.html',
   styleUrls: ['./orders-list.component.css']
 })
+@Unsubscriber
 export class OrdersListComponent implements OnInit {
   dataSource = new MatTableDataSource<OrderDto>();
   resultsLength = 0;
@@ -51,13 +54,6 @@ export class OrdersListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngOnDestroy() {
-    this.orderSubscription.unsubscribe();
-    this.searchSubscription.unsubscribe();
-    this.getPropmptsSubscription.unsubscribe();
-  }
-
   search(phrase: string) {
     console.log('OrdersListComponent: ustawiam filtr dla frazy ' + phrase);
     phrase = phrase.trim();
