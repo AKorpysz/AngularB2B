@@ -16,7 +16,7 @@
 
   <ng-container matColumnDef="status">
     <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{element.status | orderStatusFormatter}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="construction">

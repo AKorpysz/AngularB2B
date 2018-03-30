@@ -22,6 +22,7 @@ import { OrdersServiceMock } from './mockServices/orders-mock.service';
 import { TempComponent } from './temp/temp.component';
 import { SearchService } from './shared/search.service';
 import { SearchComponent } from './search/search.component';
+import { OrderStatusFormatterPipe } from './shared/orderStatusFormatter.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { SearchComponent } from './search/search.component';
     OrdersComponent,
     OrdersListMobileComponent,
     SearchComponent,
-    TempComponent
+    TempComponent,
+    OrderStatusFormatterPipe
   ],
   exports: [
    MaterialModule

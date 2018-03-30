@@ -1,10 +1,10 @@
-import { Status } from './Status';
+import { OrderStatus } from './OrderStatus';
 
 export class OrderDto {
   id: number;
   externalNumberTrade: string;
   externalNumberSa: string;
-  status: Status;
+  status: OrderStatus;
   construction: string;
   responsiblePerson: string;
   dateCreation: Date;
