@@ -6,7 +6,6 @@ import { ReturnStatement } from '@angular/compiler';
 import { SearchService } from '../shared/search.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Unsubscriber } from '../shared/unsubscriber';
-import { OrderStatusFormatterPipe } from '../shared/orderStatusFormatter.pipe';
 import { OrderStatus } from '../dto/OrderStatus';
 import { Router } from '@angular/router';
 

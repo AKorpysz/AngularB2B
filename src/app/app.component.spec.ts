@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestHelperService } from './shared/test-helper.service.spec';
 import { ScreenDetectorService } from './services/screen-detector.service';
 import { ScreenDetectorMock } from './mockServices/screen-detector-mock.service';
+import { SearchComponent } from './search/search.component';
+import { SearchService } from './shared/search.service';
+import { SearchServiceMock } from './mockServices/search-mock.service';
 describe('AppComponent', () => {
   const routes: Routes = [];
   let testService: TestHelperService<AppComponent>;
@@ -17,10 +20,12 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [MaterialModule,  RouterModule.forRoot(routes), BrowserAnimationsModule ],
-      declarations: [AppComponent,  LeftMenuComponent, MenuButtonComponent],
+      declarations: [AppComponent,  LeftMenuComponent, MenuButtonComponent, SearchComponent],
       providers: [
         { provide: ScreenDetectorService, useClass: ScreenDetectorMock},
-        { provide: APP_BASE_HREF, useValue : '/' }]
+        { provide: APP_BASE_HREF, useValue : '/' },
+        { provide: SearchService, useClass: SearchServiceMock }
+      ]
     })
     .compileComponents();
   }));
