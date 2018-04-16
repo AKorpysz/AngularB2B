@@ -1,4 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 export class TestHelperService<T> {
   fixture: ComponentFixture<T>;
@@ -10,6 +11,10 @@ export class TestHelperService<T> {
     const compiled = this.fixture.debugElement.nativeElement;
     const uiElement = compiled.querySelector(name);
     return uiElement;
+  }
+
+  getElementByCss(name: string) {
+    return this.fixture.debugElement.query(By.css(name));
   }
 
   checkAttributeValue(elementName: string, attributeName: string, testedValue: string) {
@@ -36,8 +41,19 @@ export class TestHelperService<T> {
     expect(uiElement === '' || uiElement === null).toEqual(false);
   }
 
+  checkElementExistByCss(elementName: string) {
+    const uiElement = this.getElementByCss(elementName);
+    expect(uiElement).toBeDefined();
+    expect(uiElement === null).toEqual(false);
+  }
+
   checkElementNotExist(elementName: string) {
     const uiElement = this.getElement(elementName);
     expect(uiElement === '' || uiElement === null || uiElement.toBeUndefined()).toEqual(true);
+  }
+
+  getChildrenLenghtOfForCssName(elementName: string) {
+    const uiElement = this.getElementByCss(elementName);
+    return uiElement.children.length;
   }
 }
