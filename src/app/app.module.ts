@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
@@ -23,6 +23,8 @@ import { TempComponent } from './temp/temp.component';
 import { SearchService } from './shared/search.service';
 import { SearchComponent } from './search/search.component';
 import { OrderStatusFormatterPipe } from './shared/orderStatusFormatter.pipe';
+import { ConstructionServiceMock } from './mockServices/construction-mock.service';
+import { ConstructionService } from './shared/construction.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,13 +50,16 @@ import { OrderStatusFormatterPipe } from './shared/orderStatusFormatter.pipe';
     MaterialModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule
   ],
   providers: [
     ScreenDetectorService,
     OrdersService,
     OrdersServiceMock,
-    SearchService
+    SearchService,
+    ConstructionService,
+    ConstructionServiceMock
   ],
   bootstrap: [AppComponent]
 })

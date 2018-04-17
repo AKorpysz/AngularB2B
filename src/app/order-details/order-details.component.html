@@ -1,3 +1,47 @@
-<p>
-  order-details works!
-</p>
+<div class="form-container">
+  <mat-form-field ng-if="order.id">
+    <input matInput placeholder="Id B2B" [(ngModel)]="order.id">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Numer Trade" [(ngModel)]="order.externalNumberTrade">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Numer Sa" [(ngModel)]="order.externalNumberSa">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Status" [(ngModel)]="order.status">
+        <mat-option *ngFor="let status of statuses" [value]="status"> {{status | orderStatusFormatter}} </mat-option>
+      </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [formControl]="constructionAutocompleteForm" type="text" placeholder="Budowa" [(ngModel)]="order.construction"  [matAutocomplete]="constructionAutocomplete">
+  </mat-form-field>
+  <mat-autocomplete #constructionAutocomplete="matAutocomplete">
+      <mat-option *ngFor="let construction of filteredConstructions | async" [value]="construction">
+        {{ construction }}
+      </mat-option>
+    </mat-autocomplete>
+
+  <mat-form-field>
+    <input matInput placeholder="Osoba odpowiedzialna" [(ngModel)]="order.responsiblePerson">
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput [matDatepicker]="datePickerCreationDate" placeholder="Data utworzenia" [(ngModel)]="order.dateCreation">
+      <mat-datepicker-toggle matSuffix [for]="datePickerCreationDate"></mat-datepicker-toggle>
+      <mat-datepicker #datePickerCreationDate></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput [matDatepicker]="datePickerLimitDate" placeholder="Data zatwierdzenia" [(ngModel)]="order.dateLimit">
+      <mat-datepicker-toggle matSuffix [for]="datePickerLimitDate"></mat-datepicker-toggle>
+      <mat-datepicker #datePickerLimitDate></mat-datepicker>
+  </mat-form-field>
+
+</div>
+
+
