@@ -42,6 +42,19 @@
       <mat-datepicker #datePickerLimitDate></mat-datepicker>
   </mat-form-field>
 
+  <button  mat-raised-button color="primary" type="file"  id="file" click=loadData()>Wczytaj excela</button>
+
+  <div class="form-group">
+      <input type="file"
+             id="file"
+             (change)="handleFileInput($event.target.files)">
+  </div>
+
+  <div *ngIf=fileData>
+      {{fileData|json}}
+  </div>
 </div>
+
+
 
 
